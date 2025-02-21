@@ -28,6 +28,7 @@ router.get("/analysis",async(req,res)=>{
         const result=await Reviews.aggregate([
             {
                 $group: {
+                    _id:null,
                     TotalReviews:{ $sum: 1 },
                     AverageSentiments:{ $avg: "$sentiment" }
                 }
